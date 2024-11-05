@@ -37,4 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
         renderTasks();
         updateTaskCount();
     }
+    // Marquer une tâche comme terminée
+    function toggleTaskCompletion(taskId) {
+        const task = tasks.find(task => task.id === taskId);
+        if (task) {
+            task.completed = !task.completed;
+        }
+        renderTasks();
+        updateTaskCount();
+    }
+
     }})
