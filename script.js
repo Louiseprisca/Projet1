@@ -30,4 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         renderTasks();
         updateTaskCount();
+
+        // Supprimer une tâche
+    function deleteTask(taskId) {
+        tasks = tasks.filter(task => task.id !== taskId);
+        renderTasks();
+        updateTaskCount();
+    }
     }})
