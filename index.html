@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application To-Do Améliorée</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Ma To-Do List</h1>
+        <p id="task-count">Total: 0 | Terminées: 0</p>
+    </header>
+    <main>
+        <section id="todo-form">
+            <input type="text" id="todo-input" placeholder="Nouvelle tâche...">
+            <button id="add-button">Ajouter</button>
+        </section>
+        <section id="filter-section">
+            <button class="filter-button" data-filter="all">Toutes</button>
+            <button class="filter-button" data-filter="completed">Terminées</button>
+            <button class="filter-button" data-filter="active">Non terminées</button>
+        </section>
+        <section id="todo-list">
+            <!-- Les tâches seront ajoutées ici dynamiquement -->
+        </section>
+        <button id="clear-all-button">Effacer toutes les tâches</button>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
