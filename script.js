@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let tasks = [];
 
-    // Mise à jour du compteur de tâches
+    // Mise à jour du compteur de tous les tâches
     function updateTaskCount() {
         const totalTasks = tasks.length;
         const completedTasks = tasks.filter(task => task.completed).length;
