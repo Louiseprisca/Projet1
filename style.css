@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2em;
+    color: #34495e;
+    margin-bottom: 5px;
+}
+
+#task-count {
+    font-size: 0.9em;
+    color: #7f8c8d;
+}
+
+#todo-form, #filter-section {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+#todo-input {
+    padding: 12px;
+    font-size: 1em;
+    width: 250px;
+    border: 1px solid #dfe6e9;
+    border-radius: 6px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+#add-button, #clear-all-button {
+    background-color: #2980b9;
+    color: white;
+    font-weight: bold;
+}
+
+#add-button:hover, #clear-all-button:hover {
+    background-color: #3498db;
+}
+
+#filter-section .filter-button {
+    background-color: #ecf0f1;
+    color: #34495e;
+    border: 1px solid #dfe6e9;
+    padding: 10px;
+}
+
+#filter-section .filter-button:hover {
+    background-color: #d0d8e2;
+}
+
+#filter-section .filter-button.active {
+    background-color: #2980b9;
+    color: white;
+}
+
+#todo-list {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin: 8px 0;
+    background-color: #ecf0f1;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.todo-item.completed {
+    background-color: #d4edda;
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.todo-item span {
+    flex: 1;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+.todo-item button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.todo-item button.edit {
+    color: #2980b9;
+}
+
+.todo-item button.edit:hover {
+    color: #3498db;
+}
+
+.todo-item button.remove {
+    color: #e74c3c;
+}
+
+.todo-item button.remove:hover {
+    color: #c0392b;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
