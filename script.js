@@ -58,4 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         renderTasks(filteredTasks);
     }
+
+    // Effacer toutes les tâches
+    function clearAllTasks() {
+        tasks = [];
+        renderTasks();
+        updateTaskCount();
+    }
     }})
