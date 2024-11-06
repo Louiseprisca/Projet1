@@ -149,3 +149,11 @@ button {
 .fade-in {
     animation: fadeIn 0.3s ease-in-out;
 }
+
+/*Ajout des style*/
+main{
+    width: 500px;
+}
+span{
+    width: 45%;
+}
