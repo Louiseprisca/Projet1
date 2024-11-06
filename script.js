@@ -106,7 +106,4 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Initialisation
     updateTaskCount();
-    
-
-    
     }})
