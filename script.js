@@ -47,4 +47,15 @@ document.addEventListener("DOMContentLoaded", () => {
         updateTaskCount();
     }
 
+    // Filtrage des tâches
+    function filterTasks(filter) {
+        let filteredTasks = tasks;
+        if (filter === "completed") {
+            filteredTasks = tasks.filter(task => task.completed);
+        } else if (filter === "active") {
+            filteredTasks = tasks.filter(task => !task.completed);
+        }
+        renderTasks(filteredTasks);
+    }
+
     }})
