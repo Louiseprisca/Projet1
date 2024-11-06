@@ -6,7 +6,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const filterButtons = document.querySelectorAll(".filter-button");
     const clearAllButton = document.getElementById("clear-all-button");
 
-    let tasks = [];
+    // Charger les tâches depuis le localStorage
+    function loadTasks() {
+        const storedTasks = localStorage.getItem("tasks");
+        return storedTasks ? JSON.parse(storedTasks) : [];
+    }
+
+    // Sauvegarder les tâches dans le localStorage
+    function saveTasks() {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    
+
 
     // Mise à jour du compteur de tous les tâches
     function updateTaskCount() {
@@ -27,7 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         tasks.push(task);
         todoInput.value = "";
-
+        
+        saveTasks(); // Sauvegarder après ajout
         renderTasks();
         updateTaskCount();
     }
@@ -35,15 +48,20 @@ document.addEventListener("DOMContentLoaded", () => {
         // Supprimer une tâche
     function deleteTask(taskId) {
         tasks = tasks.filter(task => task.id !== taskId);
+        
+        saveTasks(); // Sauvegarder après suppression
         renderTasks();
         updateTaskCount();
     }
+   
     // Marquer une tâche comme terminée
     function toggleTaskCompletion(taskId) {
         const task = tasks.find(task => task.id === taskId);
         if (task) {
             task.completed = !task.completed;
+            saveTasks(); // Sauvegarder après modification
         }
+        
         renderTasks();
         updateTaskCount();
     }
@@ -62,6 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Effacer toutes les tâches
     function clearAllTasks() {
         tasks = [];
+        
+        saveTasks(); // Sauvegarder après effacement
         renderTasks();
         updateTaskCount();
     }
@@ -106,5 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     
     // Initialisation
+    renderTasks(); // Rendre les tâches initiales
     updateTaskCount();
     })
