@@ -65,4 +65,13 @@ document.addEventListener("DOMContentLoaded", () => {
         renderTasks();
         updateTaskCount();
     }
+    
+    // Evenements
+    addButton.addEventListener("click", addTask);
+    clearAllButton.addEventListener("click", clearAllTasks);
+    filterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            filterTasks(button.dateset.filter);
+        });
+    });
     }})
