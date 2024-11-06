@@ -57,5 +57,25 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         renderTasks(filteredTasks);
     }
+    // Rendu des tâches dans la liste
+    function renderTasks(filteredTasks = tasks) {
+        todoList.innerHTML = "";
+        filteredTasks.forEach(task => {
+            const taskItem = document.createElement("div");
+            taskItem.className = `task-item ${task.completed ? "completed" : ""}`;
+
+            taskItem.innerHTML = `
+                <span class="task-text">${task.text}</span>
+                <button class="complete-button">${task.completed ? "Annuler" : "Terminer"}</button>
+                <button class="delete-button">Supprimer</button>
+            `;
+
+            // Ajouter les événements aux boutons "Terminer" et "Supprimer"
+            taskItem.querySelector(".complete-button").addEventListener("click", () => toggleTaskCompletion(task.id));
+            taskItem.querySelector(".delete-button").addEventListener("click", () => deleteTask(task.id));
+
+            todoList.appendChild(taskItem);
+        });
+    }
 
     }})
