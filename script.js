@@ -76,6 +76,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             todoList.appendChild(taskItem);
         });
+
+        // permet d'ajouter  la tache avec la touche "Enter"
+        todoInput.addEventListener("key up",(e)=>{
+            if(e.key==="Enter")
+                addTask();
+        });
     }
     // Effacer toutes les tâches
     function clearAllTasks() {
