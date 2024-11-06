@@ -6,7 +6,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const filterButtons = document.querySelectorAll(".filter-button");
     const clearAllButton = document.getElementById("clear-all-button");
 
-    let tasks = [];
+    // Charger les tâches depuis le localStorage
+    function loadTasks() {
+        const storedTasks = localStorage.getItem("tasks");
+        return storedTasks ? JSON.parse(storedTasks) : [];
+    }
+
+    // Sauvegarder les tâches dans le localStorage
+    function saveTasks() {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    let tasks = loadTasks();
+
 
     // Mise à jour du compteur de tous les tâches
     function updateTaskCount() {
@@ -27,22 +39,29 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         tasks.push(task);
         todoInput.value = "";
-
+        
+        saveTasks(); // Sauvegarder après ajout
         renderTasks();
         updateTaskCount();
+    }
 
         // Supprimer une tâche
     function deleteTask(taskId) {
         tasks = tasks.filter(task => task.id !== taskId);
+        
+        saveTasks(); // Sauvegarder après suppression
         renderTasks();
         updateTaskCount();
     }
+   
     // Marquer une tâche comme terminée
     function toggleTaskCompletion(taskId) {
         const task = tasks.find(task => task.id === taskId);
         if (task) {
             task.completed = !task.completed;
+            saveTasks(); // Sauvegarder après modification
         }
+        
         renderTasks();
         updateTaskCount();
     }
@@ -56,15 +75,18 @@ document.addEventListener("DOMContentLoaded", () => {
             filteredTasks = tasks.filter(task => !task.completed);
         }
         renderTasks(filteredTasks);
-
+    }
+    
     // Effacer toutes les tâches
     function clearAllTasks() {
         tasks = [];
+        
+        saveTasks(); // Sauvegarder après effacement
         renderTasks();
         updateTaskCount();
     }
 
-    }
+    
     // Rendu des tâches dans la liste
     function renderTasks(filteredTasks = tasks) {
         todoList.innerHTML = "";
@@ -73,9 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
             taskItem.className = `task-item ${task.completed ? "completed" : ""}`;
 
             taskItem.innerHTML = `
-                <span class="task-text">${task.text}</span>
-                <button class="complete-button">${task.completed ? "Annuler" : "Terminer"}</button>
-                <button class="delete-button">Supprimer</button>
+                <div class=""> 
+                    <span class="task-text">${task.text}</span>
+                    <button class="complete-button">${task.completed ? "Annuler" : "Terminer"}</button>
+                    <button class="delete-button">Supprimer</button>
+                </div>
             `;
 
             // Ajouter les événements aux boutons "Terminer" et "Supprimer"
@@ -98,12 +122,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // permet d'ajouter  la tache avec la touche "Enter"
     todoInput.addEventListener("key up",(e)=>{
-        if(e.key==="Enter")
-            addTask();
+        if(e.key==="Enter") addTask();
     });
     
     // Initialisation
+    renderTasks(); // Rendre les tâches initiales
     updateTaskCount();
-    
-
-    }})
+    })
