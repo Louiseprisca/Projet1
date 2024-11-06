@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         renderTasks();
         updateTaskCount();
+    }
 
         // Supprimer une tâche
     function deleteTask(taskId) {
@@ -56,7 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
             filteredTasks = tasks.filter(task => !task.completed);
         }
         renderTasks(filteredTasks);
-
+    }
+    
     // Effacer toutes les tâches
     function clearAllTasks() {
         tasks = [];
@@ -64,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateTaskCount();
     }
 
-    }
+    
     // Rendu des tâches dans la liste
     function renderTasks(filteredTasks = tasks) {
         todoList.innerHTML = "";
@@ -100,10 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // permet d'ajouter  la tache avec la touche "Enter"
     todoInput.addEventListener("key up",(e)=>{
-        if(e.key==="Enter")
-            addTask();
+        if(e.key==="Enter") addTask();
     });
     
     // Initialisation
     updateTaskCount();
-    }})
+    })

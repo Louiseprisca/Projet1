@@ -19,24 +19,24 @@ body {
 
 header {
     text-align: left;
-    text-align: center;
     margin-bottom: 20px;
+    margin-right: 20px;
 }
 
 header h1 {
     font-size: 2em;
-    color: #34495e;
+    color: #cedbe8;
     margin-bottom: 5px;
 }
 
 #task-count {
     font-size: 0.9em;
-    color: #7f8c8d;
+    color: #dfe6e9;
 }
 
 #todo-form, #filter-section {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 10px;
     margin: 10px 0;
     width: 500px;
@@ -45,7 +45,7 @@ header h1 {
 #todo-input {
     padding: 12px;
     font-size: 1em;
-    width: 250px;
+    width: 70%;
     border: 1px solid #dfe6e9;
     border-radius: 6px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
