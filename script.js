@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
 
-    
+    let tasks = loadTasks();
 
 
     // Mise à jour du compteur de tous les tâches
