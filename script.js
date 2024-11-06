@@ -65,9 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
             taskItem.className = `task-item ${task.completed ? "completed" : ""}`;
 
             taskItem.innerHTML = `
-                <span class="task-text">${task.text}</span>
-                <button class="complete-button">${task.completed ? "Annuler" : "Terminer"}</button>
-                <button class="delete-button">Supprimer</button>
+                <div class=""> 
+                    <span class="task-text">${task.text}</span>
+                    <button class="complete-button">${task.completed ? "Annuler" : "Terminer"}</button>
+                    <button class="delete-button">Supprimer</button>
+                </div>
             `;
 
             // Ajouter les événements aux boutons "Terminer" et "Supprimer"
