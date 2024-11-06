@@ -77,5 +77,12 @@ document.addEventListener("DOMContentLoaded", () => {
             todoList.appendChild(taskItem);
         });
     }
+    // Effacer toutes les tâches
+    function clearAllTasks() {
+        tasks = [];
+        renderTasks();
+        updateTaskCount();
+    }
+    
 
     }})
