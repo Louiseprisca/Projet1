@@ -56,6 +56,14 @@ document.addEventListener("DOMContentLoaded", () => {
             filteredTasks = tasks.filter(task => !task.completed);
         }
         renderTasks(filteredTasks);
+
+    // Effacer toutes les tâches
+    function clearAllTasks() {
+        tasks = [];
+        renderTasks();
+        updateTaskCount();
+    }
+
     }
     // Rendu des tâches dans la liste
     function renderTasks(filteredTasks = tasks) {
@@ -78,13 +86,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
             todoList.appendChild(taskItem);
         });
-    }
-    // Effacer toutes les tâches
-    function clearAllTasks() {
-        tasks = [];
-        renderTasks();
-        updateTaskCount();
-    }
+
+        }
+    
+    // Événements
+    addButton.addEventListener("click", addTask);
+    clearAllButton.addEventListener("click", clearAllTasks);
+    filterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            filterTasks(button.dataset.filter);
+        });
+    });
+
+    // permet d'ajouter  la tache avec la touche "Enter"
+    todoInput.addEventListener("key up",(e)=>{
+        if(e.key==="Enter")
+            addTask();
+    });
+    
+    // Initialisation
+    updateTaskCount();
+    
 
     
     }})
